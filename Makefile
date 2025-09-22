@@ -7,7 +7,8 @@ SRC_DIR = src_c
 TEST_DIR = test_c
 
 # Arquivos
-SRC_FILES = $(wildcard $(SRC_DIR)/*.c)
+# Corrigido para listar apenas os arquivos necessários
+SRC_FILES = $(SRC_DIR)/Bubblesort.c $(SRC_DIR)/busca_seq_ordenada.c $(SRC_DIR)/recursao.c $(SRC_DIR)/primeira_versao_defeituosa.c
 TEST_FILE = $(TEST_DIR)/test_algorithms.c
 EXECUTABLE = a.exe
 
