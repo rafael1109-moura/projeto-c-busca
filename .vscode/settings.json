@@ -1,5 +1,6 @@
 {
     "files.associations": {
-        "recursao.h": "c"
+        "recursao.h": "c",
+        "busca_binaria.h": "c"
     }
 }

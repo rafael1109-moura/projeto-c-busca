@@ -1,32 +1,32 @@
 #include <stdio.h>
+#include "Bubblesort.h"
 #include "busca_seq_ordenada.h"
 #include "busca_binaria.h"
 #include "recursao.h"
 
-#define RUN_TEST(name, expr, expected)                               \
-    do {                                                             \
-        int result = (expr);                                         \
-        printf("%-25s : %s\n", name,                                  \
-               (result == (expected)) ? "OK" : "FAIL");              \
+#define RUN_TEST(name, expr, expected) \
+    do { \
+        int result = (expr); \
+        printf("%-25s %s\n", name, (result == (expected)) ? "OK" : "FAIL"); \
     } while(0)
 
 int main() {
-    //Vetor desordenado <POPULAR>
-    int arr1[] = {};
-    //Tamanho do vetor <ALTERAR>
-    int n1 = 0;
+    int arr1[] = {5, 2, 9, 1, 3, 7};
+    int n1 = sizeof(arr1) / sizeof(arr1[0]);
 
-    //Vetor ordenado <POPULAR>
-    int arr2[] = {};
-    //Tamanho do vetor <ALTERAR>
-    int n2 = 0;
+    // Ordena antes de testar busca
+    Bubblesort(arr1, n1);
 
+    // Teste busca binária
+    RUN_TEST("Busca binaria (3)", busca_binaria(arr1, n1, 3), 2);
+    RUN_TEST("Busca binaria (7)", busca_binaria(arr1, n1, 7), 4);
+    RUN_TEST("Busca binaria (5)", busca_binaria(arr1, n1, 5), 3);
+    RUN_TEST("Busca binaria (10)", busca_binaria(arr1, n1, 10), -1);
 
-    //Eexemplo de chamada da macro RUN_TEST
-    //RUN_TEST("Titulo do teste", nome_da_funcao(entradas da funcao), resposta_esperada);
-    RUN_TEST("Busca ordenada", conta_especialidades_distintas(), 0);
-    RUN_TEST("Busca binaria", busca_binaria(), 0);
-    RUN_TEST("Recursao", recursao(), 0);
-
+    // Teste busca sequencial em vetor ordenado
+    RUN_TEST("Busca sequencial (3)", busca_seq_ordenada(arr1, n1, 3), 2);
+    RUN_TEST("Busca sequencial (7)", busca_seq_ordenada(arr1, n1, 7), 4);
+    RUN_TEST("Busca sequencial (5)", busca_seq_ordenada(arr1, n1, 5), 3);
+    RUN_TEST("Busca sequencial (10)", busca_seq_ordenada(arr1, n1, 10), -1);
     return 0;
 }
