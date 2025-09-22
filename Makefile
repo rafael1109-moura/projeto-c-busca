@@ -1,24 +1,23 @@
-# Makefile 
-CC       := gcc
-CXX      := g++
-CFLAGS   := -Iinclude_c -std=c11 -Wall
-CXXFLAGS := -Iinclude_cpp -std=c++17 -Wall
+# Variáveis
+CC = gcc
+CFLAGS = -I include_c
 
-# Make expande os arquivos .c e .cpp
-SRCS_C   := $(wildcard src_c/*.c)
-SRCS_CPP := $(wildcard src_cpp/*.cpp)
+# Diretórios
+SRC_DIR = src_c
+TEST_DIR = test_c
 
-.PHONY: all clean test_c test_cpp
+# Arquivos
+SRC_FILES = $(wildcard $(SRC_DIR)/*.c)
+TEST_FILE = $(TEST_DIR)/test_algorithms.c
+EXECUTABLE = a.exe
 
-all: test_c test_cpp
+# Regra principal para compilar e testar
+test_c: $(EXECUTABLE)
+	./$(EXECUTABLE)
 
-test_c:
-	$(CC) $(CFLAGS) $(SRCS_C) test_c/test_algorithms.c -o test_c
-	./test_c
+$(EXECUTABLE): $(SRC_FILES) $(TEST_FILE)
+	$(CC) $(CFLAGS) $(SRC_FILES) $(TEST_FILE) -o $(EXECUTABLE)
 
-test_cpp:
-	$(CXX) $(CXXFLAGS) $(SRCS_CPP) test_cpp/test_algorithms.cpp -o test_cpp
-	./test_cpp
-
+# Limpeza
 clean:
-	rm -f test_c test_cpp
+	rm -f $(EXECUTABLE)
