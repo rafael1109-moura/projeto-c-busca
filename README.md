@@ -1,57 +1,38 @@
-Atividade 1: Algoritmos de Busca e Ordenação
-Este repositório contém as implementações dos algoritmos de busca e ordenação em C, com testes unitários para verificar o funcionamento de cada função.
+Estrutura de Dados Básica (EDB1) - Atividade 1
+Este projeto, desenvolvido para a disciplina de Estrutura de Dados Básica (EDB1), contém a implementação e testes de diversos algoritmos em C. O objetivo é demonstrar a aplicação prática de conceitos como busca, ordenação e recursão.
 
-Funções Implementadas
-Bubblesort
-Descrição: Implementação do algoritmo de ordenação Bubblesort. Essa função organiza um array de inteiros em ordem crescente, comparando pares de elementos adjacentes e trocando-os de posição se estiverem na ordem errada.
+Estrutura do Projeto
+O projeto é organizado da seguinte forma:
 
-Parâmetros:
+include_c/: Contém os arquivos de cabeçalho (.h) das funções.
 
-int vetor[]: O array de inteiros a ser ordenado.
+src_c/: Contém a implementação (.c) das funções.
 
-int n: O número de elementos no array.
+test_c/: Contém o arquivo test_algorithms.c com os testes unitários para cada algoritmo.
 
-Busca Sequencial em Vetor Ordenado
-Descrição: Implementação de um algoritmo de busca sequencial. A função percorre um array de inteiros, um elemento por vez, para encontrar a posição (índice) de um valor específico. A busca é otimizada para arrays já ordenados, retornando _1 se um elemento maior que o alvo for encontrado.
+Makefile: Ferramenta utilizada para automatizar a compilação e a execução dos testes.
 
-Parâmetros:
+Algoritmos Implementados
+Os seguintes algoritmos estão presentes neste projeto:
 
-int arr[]: O array de inteiros onde a busca será realizada.
+Bubblesort: Um algoritmo de ordenação simples que repete a passagem pela lista, comparando cada par de elementos adjacentes e trocando-os se estiverem na ordem errada.
 
-int n: O número de elementos no array.
+Busca Sequencial Ordenada: Algoritmo de busca para listas ordenadas que percorre a lista até encontrar o elemento desejado ou um elemento maior que ele, indicando que o valor não está presente na lista.
 
-int alvo: O valor inteiro que se deseja encontrar.
+Busca Binária Recursiva: Uma busca eficiente para listas ordenadas, que divide o espaço de busca pela metade em cada passo, reduzindo drasticamente o tempo de busca.
 
-Retorno: Retorna o índice do elemento se ele for encontrado. Retorna _1 caso contrário.
+Primeira Versão Defeituosa: Implementação de busca binária para encontrar a primeira versão com defeito em uma lista de versões.
 
-Busca Binária
-Descrição: Implementação do algoritmo de busca binária. A função busca um valor alvo em um array de inteiros ordenado dividindo o array repetidamente pela metade, até que o valor seja encontrado ou não seja mais possível continuar a busca.
+Contagem de Especialidades: Uma função que conta o número de especialidades distintas em uma lista de strings.
 
-Parâmetros:
+Contagem de Caracteres Recursiva: Uma função recursiva para contar a ocorrência de um caractere específico em uma string.
 
-int arr[]: O array de inteiros onde a busca será realizada.
+Como Compilar e Executar
+Para compilar o projeto e executar todos os testes, use o Makefile com o seguinte comando no terminal:
 
-int n: O número de elementos no array.
+& "C:\MinGW\bin\mingw32-make.exe" test_c
 
-int alvo: O valor inteiro que se deseja encontrar.
-
-Retorno: Retorna o índice do elemento se ele for encontrado. Retorna _1 caso contrário.
-
-Como Compilar e Executar o Código
-Para compilar e executar o código, utilize o Makefile fornecido no projeto. Ele automatiza o processo de compilação e execução dos testes, tornando o processo mais rápido e simples.
-
-Instruções de Uso
-Navegue até a pasta raiz do projeto (Atividade_1) no seu terminal.
-
-cd <caminho_para_o_seu_projeto>
-
-Execute o comando make para compilar e rodar os testes.
-
-make test_c
-
-Este comando irá compilar todos os arquivos .c e criar o executável, que em seguida será executado para mostrar os resultados dos testes.
-
-Limpando o Projeto
-Se precisar remover o arquivo executável (a.exe) e os arquivos objeto, use o comando:
+Para limpar o executável e outros arquivos gerados, use:
 
 make clean
+
