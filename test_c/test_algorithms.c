@@ -2,6 +2,7 @@
 #include <stdbool.h>
 #include "Bubblesort.h"
 #include "busca_seq_ordenada.h"
+#include "busca_binaria.h"
 #include "recursao.h"
 #include "primeira_versao_defeituosa.h"
 #include "conta_especialidades.h"
@@ -25,12 +26,29 @@ int main() {
     int arr1[] = {5, 2, 9, 1, 3, 7};
     int n1 = sizeof(arr1) / sizeof(arr1[0]);
 
-    // Testa o Bubble Sort e a busca sequencial
+    // Ordena o array com Bubblesort antes de iniciar os testes de busca
     Bubblesort(arr1, n1);
+
+    printf("--- Teste de Busca Binaria ---\n");
+    // Teste de Busca Binária (iterativa)
+    RUN_TEST("Busca binaria (3)", busca_binaria(arr1, n1, 3), 2);
+    RUN_TEST("Busca binaria (7)", busca_binaria(arr1, n1, 7), 4);
+    RUN_TEST("Busca binaria (5)", busca_binaria(arr1, n1, 5), 3);
+    RUN_TEST("Busca binaria (10)", busca_binaria(arr1, n1, 10), -1);
+
+    printf("\n--- Teste de Busca Sequencial Ordenada ---\n");
+    // Teste de Busca Sequencial Ordenada (o vetor já está ordenado)
     RUN_TEST("Busca sequencial (3)", busca_seq_ordenada(arr1, n1, 3), 2);
     RUN_TEST("Busca sequencial (7)", busca_seq_ordenada(arr1, n1, 7), 4);
     RUN_TEST("Busca sequencial (5)", busca_seq_ordenada(arr1, n1, 5), 3);
     RUN_TEST("Busca sequencial (10)", busca_seq_ordenada(arr1, n1, 10), -1);
+
+    printf("\n--- Teste de Busca Binaria Recursiva ---\n");
+    // Teste de Busca Binária Recursiva
+    RUN_TEST("Busca binaria recursiva (3)", buscaBinariaRecursiva(arr1, 0, n1 - 1, 3), 2);
+    RUN_TEST("Busca binaria recursiva (7)", buscaBinariaRecursiva(arr1, 0, n1 - 1, 7), 4);
+    RUN_TEST("Busca binaria recursiva (5)", buscaBinariaRecursiva(arr1, 0, n1 - 1, 5), 3);
+    RUN_TEST("Busca binaria recursiva (10)", buscaBinariaRecursiva(arr1, 0, n1 - 1, 10), -1);
 
     printf("\n--- Teste de Versao Defeituosa ---\n");
     // Novo teste para a atividade da versão defeituosa
